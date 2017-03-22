@@ -66,6 +66,7 @@ public class DesktopFrame extends JFrame {
             ChangeablePictureFrame chpicture = new ChangeablePictureFrame();
             desktop.add(chpicture);
             chpicture.setVisible(true);
+            chpicture.repaint();
         }
     };
 }

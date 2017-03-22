@@ -1,5 +1,3 @@
-import javafx.scene.paint.*;
-import javafx.scene.shape.Circle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,25 +14,33 @@ public class PictureFrame extends JInternalFrame {
         //calcuate coordinates and size for rectangle
         height = getHeight();
         width = getWidth();
-        this.pack();
-        repaint();
+        DrawPanel circle = new DrawPanel();
+        this.add(circle);
+        circle.setSize(width, height);
+        circle.setVisible(true);
+        circle.repaint();
+        this.repaint();
+    }
+    private class DrawPanel extends JPanel{
+        @Override
+        public void paintComponent(Graphics g){
+            super.paintComponent(g);
+            this.setBackground(Color.blue);
+            height = getHeight();
+            width = getWidth();
+            g.setColor(Color.YELLOW);
+            if(height > width)
+                radius = width / 4;
+            else
+                    radius = height / 4;
+            g.drawOval((int)(width * 0.7), (int)(height *0.1), radius, radius);
+            g.fillOval((int)(width * 0.7), (int)(height * 0.1), radius, radius);
+
+            g.setColor(new Color(165, 91, 7));
+            g.drawRect(0, height - height/10, width, height / 10);
+            g.fillRect(0, height - height/10, width, height / 10);
+
+        }
     }
     // paint circle and rectangle
-    public void paintComponent( Graphics g )
-    {
-        super.paintComponent( g ); // call superclass's paint method
-
-        this.setBackground( Color.BLUE);
-        if(height > width){
-            radius = width / 4;
-        }
-        else{
-            radius = height / 4;
-        }
-        xc = width / 3;
-        yc = height / 10;
-        g.setColor( Color.YELLOW );
-        g.drawOval( xc, yc, radius, radius );
-        g.fillOval( xc, yc, radius, radius );
-    }
 }
