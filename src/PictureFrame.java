@@ -11,7 +11,7 @@ public class PictureFrame extends JInternalFrame {
     PictureFrame(){
         super("Picture Frame", true, true, true, true);
         this.setBackground(Color.BLUE);
-        //calcuate coordinates and size for rectangle
+        //calculate size for rect and circle
         height = getHeight();
         width = getWidth();
         DrawPanel circle = new DrawPanel();
